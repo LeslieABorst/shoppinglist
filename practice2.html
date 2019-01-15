@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <title>Vue JS Practice 2</title>
+    </head>
+    <body class="wrapper">
+        <div id="shopping-list">
+            <header>
+                <h1>{{header.toLocaleUpperCase()}}</h1>
+                <button v-if="state === 'default'" @click="changeState('edit')">Add New Item</button>
+                <button v-else @click="changeState('default')">Cancel</button>
+            </header>
+            <div v-if="state === 'edit'" class="itemform">
+                <input type="text" v-model="newItem" placeholder="Add an Item" @keyup.enter="saveItem">
+                <button :disabled="newItem.length === 0" @click="saveItem">Save Item</button>
+            </div>
+            <ul>
+                <li v-for="(item, index) in items" :class="{strikeout: item.purchased}" @click="togglePurchased(item)">
+                    <span>{{item.label}}</span>
+                    <span class="delete" v-show="!item.purchased" @click="items.splice(index, 1)">x</span>
+                </li>
+            </ul>
+            <button v-if="" @click="emptyList">Empty List</button>
+            <p v-if="items.length === 0">No Items in the list</p>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+        <script src="index.js"></script>
+    </body>
+</html>
