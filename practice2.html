@@ -24,7 +24,7 @@
                     <span class="delete" v-show="!item.purchased" @click="items.splice(index, 1)">x</span>
                 </li>
             </ul>
-            <button v-if="" @click="emptyList">Empty List</button>
+            <button v-show="showEmpty" @click="emptyList">Empty List</button>
             <p v-if="items.length === 0">No Items in the list</p>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>

@@ -19,7 +19,7 @@ new Vue ({
                 label: '20 cups',
                 purchased: false,
             },
-        ]
+        ],
     },
     methods: {
         saveItem: function() {
@@ -35,10 +35,18 @@ new Vue ({
         },
         togglePurchased: function(item) {
             item.purchased = !item.purchased;
+
         },
         emptyList: function() {
             this.items = [];
         },
-        
+        emptyButton: function(purchases) {
+            return purchases.purchased === true;
+        }
+    },
+    computed: {
+        showEmpty: function() {
+            return this.items.every(this.emptyButton);
+        }
     }
 });
